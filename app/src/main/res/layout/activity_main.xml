@@ -15,15 +15,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/logo_drogueria" />
+        android:src="@drawable/logo_drogueria"
+        />
 
     <EditText
         android:id="@+id/activity_login__input__login_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="@string/login_usuario"
         android:inputType="textPersonName"
@@ -43,7 +45,8 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_login__input__login_usuario" />
+        app:layout_constraintTop_toBottomOf="@id/activity_login__input__login_usuario"
+        android:backgroundTint="@color/colorPrimary"/>
 
     <Button
         android:id="@+id/activity_login__btn__login"
@@ -55,7 +58,9 @@
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_login__input__login_password" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_login__input__login_password"
+        android:background="@drawable/button_rounded"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
