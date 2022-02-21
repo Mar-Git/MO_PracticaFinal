@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/colorPrimary"
         android:ems="10"
@@ -49,18 +49,67 @@
         android:backgroundTint="@color/colorPrimary"/>
 
     <Button
-        android:id="@+id/activity_login__btn__login"
+        android:id="@+id/activity_login__btn__usu_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="38dp"
         android:layout_marginEnd="32dp"
-        android:text="Login"
+        android:background="@drawable/button_rounded"
+        android:text="Detalles Usuario"
+        android:textColor="#F6F2F2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_login__input__login_password"
-        android:background="@drawable/button_rounded"
+        app:layout_constraintTop_toBottomOf="@+id/activity_login__input__login_password" />
+
+    <TextView
+        android:id="@+id/activity_login__lbl__usu_completeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:hint="@string/completeName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_login__btn__usu_details" />
+
+    <EditText
+        android:id="@+id/activity_login__input__usu_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/usu_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_login__lbl__usu_completeName"
+        android:backgroundTint="@color/colorPrimary"
         />
+
+    <Button
+        android:id="@+id/activity_login__btn__accept_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/button_rounded"
+        android:text="Accept"
+        android:textColor="#F8F5F5"
+        app:layout_constraintEnd_toStartOf="@id/activity_login__btn__continue_products_list"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_login__input__usu_email" />
+
+    <Button
+        android:id="@+id/activity_login__btn__continue_products_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="80dp"
+        android:background="@drawable/button_rounded"
+        android:text="Continue"
+        android:textColor="#FAF6F6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_login__input__usu_email" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
