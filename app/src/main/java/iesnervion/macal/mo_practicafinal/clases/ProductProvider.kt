@@ -19,19 +19,19 @@ class ProductProvider {
                 "Multicentrum, complemento alimenticio",
                 "Nutricional",
                 7.2,
-                "https://cienzoo.com/wp-content/uploads/2020/03/51fc70Y37SL.jpg"
+                "https://www.farmaciauniversal24h.com/parafarmacia/1136-large_default/multicentrum-30-comp.jpg"
             ),
             Product(
                 "Eucerin crema de manos",
                 "Higiene",
                 10.3,
-                "https://www.kindpng.com/picc/m/266-2668506_eucerin-hd-png-download.png"
+                "https://www.farmaciagranviavalencia.es/1220-large_default/eucerin-hyaluron-filler-peeling-serum-noche-30-ml.jpg"
             ),
             Product(
                 "Normodorm 25 mg",
                 "Medicamentos",
                 5.1,
-                "https://farmaciadelcruce.com/110-large_default/normodorm-25-mg-14-comprimidos-recubiertos.jpg"
+                "https://farmatorre.com/pics/contenido/normodor-445x0.png"
             ),
             Product(
                 "Oraldine enjuague bucal",
@@ -49,13 +49,7 @@ class ProductProvider {
                 "Hierro 14 mg",
                 "Nutricional",
                 11.95,
-                "https://media.simplysupplements.es/biblioteca/new_tub/hierro-14mg.jpg?2019-08-06"
-            ),
-            Product(
-                "Compresas post-parto",
-                "Higiene",
-                5.95,
-                "https://www.castrofarmacias.com/media/catalog/product/cache/edf7b936402ad2210b32c215604fc9c6/i/n/indasec_compresas_post_parto_algodon_puro_primeros_dias_hipoalergenicas.jpg"
+                "https://m.media-amazon.com/images/I/71DDLYXdcPL._AC_SL1500_.jpg"
             ),
             Product(
                 "Voltadol Forte",
