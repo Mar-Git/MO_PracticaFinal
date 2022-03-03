@@ -17,10 +17,10 @@ class ProductViewHolder(view: View):RecyclerView.ViewHolder(view) {
     val priceProduct =view.findViewById<TextView>(R.id.item_login__lbl__price_producto)
     val photo = view.findViewById<ImageView>(R.id.item_login__img__image_product)*/
 
-    fun render(productModel: Product){
+    fun render(productModel: Product, onclickListener:(Product)->Unit){
         binding.itemLoginLblNameProducto.text=productModel.name
         binding.itemLoginLblPriceProducto.text=productModel.price.toString()
         Glide.with(binding.itemLoginImgImageProduct.context).load(productModel.image).into(binding.itemLoginImgImageProduct);
-        //itemView.setOnClickListener()
+        itemView.setOnClickListener { onclickListener(productModel) }
     }
 }

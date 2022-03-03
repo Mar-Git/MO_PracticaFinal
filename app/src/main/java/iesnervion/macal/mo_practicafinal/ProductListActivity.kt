@@ -3,6 +3,7 @@ package iesnervion.macal.mo_practicafinal
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,7 +25,16 @@ class ProductListActivity : AppCompatActivity() {
     }
     fun initRecyclerView(){
         binding.activityProductListRvProductList.layoutManager= LinearLayoutManager(this)
-        binding.activityProductListRvProductList.adapter=ProductAdapter(ProductProvider.productList)
+        binding.activityProductListRvProductList.adapter=
+            ProductAdapter(ProductProvider.productList) { product ->
+                onItemSelected(
+                    product
+                )
+            }
+    }
 
+    fun onItemSelected(product: Product){
+        Toast.makeText(this,product.name, Toast.LENGTH_SHORT).show()
+        //ir a otra activity
     }
 }
