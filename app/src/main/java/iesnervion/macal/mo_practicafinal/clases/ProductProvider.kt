@@ -58,5 +58,16 @@ class ProductProvider {
                 "https://oferfarma.com/wp-content/uploads/2021/01/voltadol-forte-gel-topico-100g.jpg"
             )
         )
+
+        /*fun getAll(): List<Product> = productList
+
+        fun search(query: String): List<Product> {
+            if (query.isBlank())
+                return emptyList()
+            return productList.filter { expense ->
+                val regex = query.toRegex(RegexOption.IGNORE_CASE)
+                regex.containsMatchIn(expense.name)
+            }
+        }*/
     }
 }
