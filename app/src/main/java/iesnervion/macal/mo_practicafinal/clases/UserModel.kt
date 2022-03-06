@@ -1,15 +1,22 @@
 package iesnervion.macal.mo_practicafinal.clases
 
-class UserProvider {
+import android.text.Editable
+
+class UserModel {
+    val email: Editable?
+        get() {
+            return email
+        }
+
     companion object{
-        val userList = listOf<User>(
+        val user =
             User(
                 "Federico",
                 "Garcia Lorca",
-                "federirico@gmail.com",
+                "",
                 "feder",
                 "123"
             )
-        )
+
     }
 }

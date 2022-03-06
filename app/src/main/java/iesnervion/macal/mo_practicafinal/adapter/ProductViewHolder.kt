@@ -20,7 +20,9 @@ class ProductViewHolder(view: View):RecyclerView.ViewHolder(view) {
     fun render(productModel: Product, onclickListener:(Product)->Unit){
         binding.itemLoginLblNameProducto.text=productModel.name
         binding.itemLoginLblPriceProducto.text=productModel.price.toString()
-        Glide.with(binding.itemLoginImgImageProduct.context).load(productModel.image).into(binding.itemLoginImgImageProduct);
-        itemView.setOnClickListener { onclickListener(productModel) }
+        Glide.with(binding.itemLoginImgImageProduct.context).load(productModel.image).into(binding.itemLoginImgImageProduct)
+        itemView.setOnClickListener {
+            onclickListener(productModel)
+        }
     }
 }

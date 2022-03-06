@@ -1,10 +1,13 @@
 package iesnervion.macal.mo_practicafinal
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,12 +22,20 @@ import iesnervion.macal.mo_practicafinal.viewModels.ProductVM
 import kotlinx.coroutines.CoroutineScope
 import java.util.*
 
-class ProductListActivity : AppCompatActivity()/*,SearchView.OnQueryTextListener,
-    androidx.appcompat.widget.SearchView.OnQueryTextListener*/ {
+class ProductListActivity : AppCompatActivity(),
+    androidx.appcompat.widget.SearchView.OnQueryTextListener {
+   companion object{
+       const val EXTRA_DETAILS_PRODUCT= "Practica_Android.PRODUCT"
+   }
+    /*private val productDetailsLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        activityResult->
+        onItemSelected()
 
+    }*/
     private lateinit var binding: ActivityProductListBinding
+    //private lateinit var recycler_adapter:ProductAdapter
 
-    private val productViewModel : ProductVM by viewModels()
+    //private val productViewModel : ProductVM by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +43,7 @@ class ProductListActivity : AppCompatActivity()/*,SearchView.OnQueryTextListener
         setContentView(binding.root)
         initRecyclerView()
 
-        //binding.activityProductListSvSearchProduct.setOnQueryTextListener(this)
+        val search=binding.activityProductListSvSearchProduct.setOnQueryTextListener(this)
     }
     fun initRecyclerView(){
         binding.activityProductListRvProductList.layoutManager= LinearLayoutManager(this)
@@ -42,6 +53,42 @@ class ProductListActivity : AppCompatActivity()/*,SearchView.OnQueryTextListener
                     product
                 )
             }
+    }
+    fun onItemSelected(product: Product){
+        //val intent = Intent(this,HelloActivity::class.java) startActivity(intent)
+        val intent = Intent(this,ProductDetails::class.java).apply {
+            putExtra(EXTRA_DETAILS_PRODUCT,product)
+        }
+        startActivity(intent)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String): Boolean {
+        //recycler_adapter.filtrarProductos(newText)
+        //productList.setAdapter(recycler_adapter)
+        return false
+    }
+    fun filtrarProductos(texto: String) {
+        if (texto.length === 0) {
+            val productListAux : List<Product> = productList
+            productList =
+                ArrayList(productListAux) //listaProductosAux tiene todos los productos
+        } else {
+            productList.subList(0,0)
+            for (producto in productList) {
+                if (producto.name.lowercase(Locale.getDefault()).contains(
+                        (texto as CharSequence).toString().lowercase(Locale.getDefault())
+                    ) //Dios esta contigo
+                    || java.lang.String.valueOf(producto.price)
+                        .contains((texto as CharSequence).toString().lowercase(Locale.getDefault()))
+                ) {
+                    productList=listOf(producto)
+                }
+            }
+        }
     }
     //INTENTOS DE SEARCHVIEW
     /*private fun searchByName(query:String){
@@ -59,8 +106,6 @@ class ProductListActivity : AppCompatActivity()/*,SearchView.OnQueryTextListener
     override fun onQueryTextChange(p0: String?): Boolean {
         return true
     }*/
-    fun onItemSelected(product: Product){
-        Toast.makeText(this,product.name, Toast.LENGTH_SHORT).show()
-        //ir a otra activity
-    }
+
+
 }

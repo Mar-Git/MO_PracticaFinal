@@ -1,15 +1,17 @@
 package iesnervion.macal.mo_practicafinal.viewModels
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import iesnervion.macal.mo_practicafinal.clases.*
 
-class UserVM {
+class UserVM: ViewModel()  {
 
-    val userModel = MutableLiveData<User>()
+    var userModel = MutableLiveData<UserModel>()
 
-    fun getUserVM (position:Int){
-
-        val currentUser = UserProvider.userList.get(position)
-        userModel.postValue(currentUser)
+    fun  getUserVM (): MutableLiveData<UserModel> {
+        if (userModel == null) {
+            userModel = MutableLiveData<UserModel>()
+        }
+        return userModel
     }
 }
