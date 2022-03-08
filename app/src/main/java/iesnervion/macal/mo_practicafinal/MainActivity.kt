@@ -1,6 +1,7 @@
 package iesnervion.macal.mo_practicafinal
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -12,6 +13,7 @@ import iesnervion.macal.mo_practicafinal.viewModels.*
 class MainActivity : AppCompatActivity() {
     
     private lateinit var binding: ActivityMainBinding
+
     private val userViewModel : UserVM by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         }
         userViewModel.userModel.observe(this, Observer{ currentUser->
             binding.activityLoginInputUsuEmail.text = currentUser.email
+
             //aqui tendria q recibir el nuevo email y guardarlo en el objeto User
         })
     }

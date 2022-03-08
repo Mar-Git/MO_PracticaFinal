@@ -11,7 +11,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,24 +22,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:hint="Nombre"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/product_details__img__img_product" />
+        app:layout_constraintTop_toBottomOf="@+id/product_details__lbl__category_product" />
 
     <TextView
         android:id="@+id/product_details__lbl__category_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
         android:hint="Categoria"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/product_details__lbl__name_product"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toEndOf="@id/product_details__lbl__name_product"
-        app:layout_constraintTop_toBottomOf="@id/product_details__img__img_product"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_details__img__img_product" />
 
     <TextView
         android:id="@+id/product_details__lbl_price_product"
@@ -81,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Cantidad Disponible:"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="32dp"
-        android:text="Precio"
+        android:text="Precio:"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/product_details__lbl_unidades_cabecera" />
@@ -103,6 +101,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="€"
-        app:layout_constraintBottom_toBottomOf="@+id/product_details__lbl_price_product"
-        app:layout_constraintStart_toEndOf="@+id/product_details__lbl_price_product" />
+        app:layout_constraintBottom_toBottomOf="@id/product_details__lbl_price_product"
+        app:layout_constraintStart_toEndOf="@id/product_details__lbl_price_product" />
+
+    <ImageButton
+        android:id="@+id/activity_product_details__btn__continue_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
+        android:clickable="true"
+        android:src="@drawable/ic_shopping_cart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/product_details__lbl_cabecera"
+        app:layout_constraintTop_toTopOf="@id/product_details__lbl_cabecera" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/activity_product_details__btn__add_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:tint="#FFFCFC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_details__img__img_product"
+        app:layout_constraintVertical_bias="0.614"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

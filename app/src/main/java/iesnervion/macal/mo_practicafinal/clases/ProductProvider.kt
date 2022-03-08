@@ -1,5 +1,8 @@
 package iesnervion.macal.mo_practicafinal.clases
 
+import java.util.*
+import kotlin.collections.ArrayList
+
 class ProductProvider {
     companion object{
         var productList = listOf<Product>(
@@ -18,7 +21,7 @@ class ProductProvider {
             "http://www.aepsal.com/wp-content/uploads/2017/03/Ibuprofeno-e1489614454904.png"
             ),
             Product(
-                "Multicentrum, complemento alimenticio",
+                "Multicentrum",
                 "Nutricional",
                 7.2,
                 45,
@@ -46,7 +49,7 @@ class ProductProvider {
                 "https://dhb3yazwboecu.cloudfront.net/439/oraldine-clasico-farmaconfianza_l.png"
             ),
             Product(
-                "Potito Hero fruta variada",
+                "Potito Hero fruta",
                 "Nutricional",
                 1.95,
                 78,
@@ -68,15 +71,55 @@ class ProductProvider {
             )
         )
 
-        /*fun getAll(): List<Product> = productList
+        fun generarListaCategorias(): ArrayList<String> {
+            val lista: ArrayList<String> = ArrayList()
+            lista.add("Filtrar por")
+            lista.add("Higiene")
+            lista.add("Medicamentos")
+            lista.add("Nutricional")
+            return lista
+        }
 
-        fun search(query: String): List<Product> {
-            if (query.isBlank())
-                return emptyList()
-            return productList.filter { expense ->
-                val regex = query.toRegex(RegexOption.IGNORE_CASE)
-                regex.containsMatchIn(expense.name)
+        fun generarListaOrdenar(): List<String> {
+            val lista: MutableList<String> = mutableListOf()
+            lista.add("Ordenar por")
+            lista.add("Precio")
+            lista.add("Nombre")
+            return lista
+        }
+
+        fun realizarFiltrado(lista: List<Product>, filtro: String): List<Product> {
+            val listaProductos: MutableList<Product> = mutableListOf()
+            for (i in 0 until lista.size) {
+                if (lista[i].category.contains(filtro)) {
+                    listaProductos.add(lista[i])
+                }
             }
-        }*/
+            return listaProductos
+        }
+
+        /**
+         * Ordena la lista segun el precio de mayor a menor
+         * @param lista lista a ordenar
+         */
+        fun ordenarPrecioMayorMenor(lista: List<Product>) {
+            Collections.sort(lista) { o1, o2 ->
+                var resultado = 0
+                if (o1.price> o2.price) {
+                    resultado = -1
+                } else if (o1.price < o2.price) {
+                    resultado = 1
+                }
+                resultado
+            }
+        }
+
+        /**
+         * la lista alfabeticamente de la a-Z
+         * @param lista lista a ordenar.
+         */
+        fun ordenarAlfabeticamenteAZ(lista: List<Product>) {
+            Collections.sort(lista) { o1, o2 -> o1.name.compareTo(o2.name) }
+        }
     }
 }

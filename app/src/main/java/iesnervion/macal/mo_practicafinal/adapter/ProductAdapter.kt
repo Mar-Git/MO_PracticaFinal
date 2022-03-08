@@ -1,16 +1,44 @@
 package iesnervion.macal.mo_practicafinal.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import iesnervion.macal.mo_practicafinal.R
 import iesnervion.macal.mo_practicafinal.clases.Product
-import java.util.*
-import kotlin.collections.ArrayList
+
 
 class ProductAdapter(
     private var productList:List<Product>,
-    private val onclickListener:(Product)->Unit) : RecyclerView.Adapter<ProductViewHolder>() {
+    private val productListener : ProductListener) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+
+
+    inner class ProductViewHolder(view: View): RecyclerView.ViewHolder(view){
+
+        private var name : TextView = view.findViewById(R.id.item_product__lbl__name_producto)
+        private var price : TextView = view.findViewById(R.id.item_product__lbl__price_producto)
+        private var image : ImageView = view.findViewById(R.id.item_product__img__image_product)
+        private var btnAdd : ImageButton = view.findViewById(R.id.item_product__btn_add_cart)
+
+        fun bind(product : Product){
+
+            name.text = product.name
+            price.text = product.price.toString()
+            Glide.with(itemView.context)
+                .load(product.image)
+                .into(image)
+            btnAdd.setOnClickListener {
+                productListener.onButtonAddCartClicked(product)
+                //Toast.makeText(this,"",Toast.LENGTH_SHORT)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val layoutInflater=LayoutInflater.from(parent.context)
@@ -18,29 +46,25 @@ class ProductAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val item = productList[position]
-        holder.render(item, onclickListener)
+
+        holder.bind(productList[position])
+        holder.itemView.setOnClickListener {
+            val currentProduct = productList[holder.adapterPosition]
+            productListener.onProductClicked(currentProduct)
+        }
     }
 
     override fun getItemCount(): Int = productList.size //devuelve el tamño del listado
 
-    /*fun filtrarProductos(texto: String) {
-        if (texto.length === 0) {
-            val productListAux : List<Product> = productList
-            productList =
-                ArrayList(productListAux) //listaProductosAux tiene todos los productos
-        } else {
-            productList.clear()
-            for (producto in listadoProductosOriginal) {
-                if (producto.getNombre().toLowerCase().contains(
-                        (texto as CharSequence).toString().toLowerCase()
-                    ) //Dios esta contigo
-                    || java.lang.String.valueOf(producto.getPrecioUnitario())
-                        .contains((texto as CharSequence).toString().toLowerCase())
-                ) {
-                    listadoProducto.add(producto)
-                }
-            }
-        }
-    }*/
+    interface ProductListener{
+        fun onProductClicked(product : Product)
+        fun onButtonAddCartClicked(product: Product)
+    }
+
+    fun setData(productListAux: List<Product>) {
+        this.productList = productListAux
+        notifyDataSetChanged()
+    }
+
+
 }

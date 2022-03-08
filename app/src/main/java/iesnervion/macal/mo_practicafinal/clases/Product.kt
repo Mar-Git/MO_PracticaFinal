@@ -4,11 +4,12 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Product
-    (val name: String,
-     val category: String,
-     val price: Double,
-     val units: Int,
-     val image: String) :Parcelable{
+    (
+    var name: String,
+    val category: String,
+    val price: Double,
+    val units: Int,
+    val image: String) :Parcelable{
 
     constructor(parcel: Parcel) : this(
         parcel.readString().toString(),

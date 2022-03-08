@@ -11,12 +11,11 @@ class UserModel {
     companion object{
         val user =
             User(
-                "Federico",
-                "Garcia Lorca",
+                "Usuario",
+                "De Prueba",
                 "",
-                "feder",
+                "usu",
                 "123"
             )
-
     }
 }
